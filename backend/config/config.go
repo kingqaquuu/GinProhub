@@ -3,7 +3,7 @@ package config
 import (
 	"fmt"
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
+	"os"
 )
 
 type Config struct {
@@ -29,7 +29,8 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-	yamlFile, err := ioutil.ReadFile("config.yaml")
+	configPath:="../config/config.yaml"
+	yamlFile, err := os.ReadFile(configPath)
 	if err != nil {
 		return nil, fmt.Errorf("读取配置文件失败: %v", err)
 	}
@@ -38,4 +39,16 @@ func LoadConfig() (*Config, error) {
 		return nil, fmt.Errorf("解析配置文件失败: %v", err)
 	}
 	return &cfg, nil
+}
+
+func (cfg *Config) DSN() string {
+    return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=%t&loc=%s",
+        cfg.Database.Username,
+        cfg.Database.Password,
+        cfg.Database.Host,
+        cfg.Database.Port,
+        cfg.Database.Name,
+        cfg.Database.Charset,
+        cfg.Database.ParseTime,
+        cfg.Database.Loc)
 }
