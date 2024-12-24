@@ -1,0 +1,18 @@
+database:
+  username: root
+  password: 123123123
+  host: "localhost"
+  port: "3306"
+  name: "ginprohub"
+  charset: "utf8mb4"
+  parseTime : true
+  loc: "Local"
+
+server:
+  ip: "0.0.0.0"
+  Port: "8080"
+
+redis:
+  addr: "localhost:6379"
+  password: ""
+  db: 0
