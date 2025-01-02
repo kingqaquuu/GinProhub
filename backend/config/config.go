@@ -42,13 +42,13 @@ func LoadConfig() (*Config, error) {
 }
 
 func (cfg *Config) DSN() string {
-    return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=%t&loc=%s",
+    return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=true&loc=%s",
         cfg.Database.Username,
         cfg.Database.Password,
         cfg.Database.Host,
         cfg.Database.Port,
         cfg.Database.Name,
         cfg.Database.Charset,
-        cfg.Database.ParseTime,
+        //cfg.Database.ParseTime,
         cfg.Database.Loc)
 }
