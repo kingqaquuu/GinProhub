@@ -49,6 +49,5 @@ func (cfg *Config) DSN() string {
         cfg.Database.Port,
         cfg.Database.Name,
         cfg.Database.Charset,
-        //cfg.Database.ParseTime,
         cfg.Database.Loc)
 }
